@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import {} from "../client/build/";
+
 //importing end points of routes
 import userRoutes from "./Routers/userRoutes.js";
 import transactionRoutes from "./Routers/transactionRoutes.js";
@@ -10,6 +10,7 @@ import transactionRoutes from "./Routers/transactionRoutes.js";
 import { ErrorHandler } from "./Middleware/Error.js";
 import { dbConn } from "./Config/database.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config({ path: "Config/.env" });
 
@@ -20,6 +21,9 @@ process.on("uncaughtException", (err) => {
 });
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 //middleware
 app.use(morgan("dev"));
@@ -30,10 +34,10 @@ app.use(cors());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/transaction", transactionRoutes);
 //static files
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 //error handle middleware
