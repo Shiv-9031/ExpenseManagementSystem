@@ -1,0 +1,38 @@
+.Filters {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 15px 20px;
+  box-shadow: 0 0 4px white;
+  width: 100%;
+}
+
+.save-button {
+  width: 50%;
+}
+.save-button > .button-save {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  width: 60%;
+  border-radius: 5px;
+}
+.anticon svg {
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+.switch-icons {
+  border: 1px solid rgba(0, 0, 0, 0.677);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+.active-icon {
+  color: black;
+}
+
+.inactive-icon {
+  color: gray;
+}
